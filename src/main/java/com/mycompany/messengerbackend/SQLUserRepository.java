@@ -27,7 +27,7 @@ public class SQLUserRepository extends UserRepository {
             c = dbc.connect();
             query = "insert into user values(?,?,?)";
             st = c.prepareStatement(query);
-            st.setString(1, a.getId());
+            st.setInt(1, a.getId());
             st.setString(2, a.getName());
             st.setString(3, a.getPassword());
             st.execute();
@@ -41,14 +41,14 @@ public class SQLUserRepository extends UserRepository {
     }
     
     @Override
-    public boolean removeUserById(String id){
+    public boolean removeUserById(int id){
         
         try{
             
             c = dbc.connect();
             query = "delete from user where id = ?";
             st = c.prepareStatement(query);
-            st.setString(1,id);
+            st.setInt(1,id);
             st.execute();
             
             System.out.println("step 1 complete");
@@ -63,7 +63,7 @@ public class SQLUserRepository extends UserRepository {
     
     
     @Override
-    public User getElementById(String id) {
+    public User getElementById(int id) {
 
 
         try {
@@ -71,11 +71,11 @@ public class SQLUserRepository extends UserRepository {
             c = dbc.connect();
             query = "select id , name , password from user where id = ?";
             st = c.prepareStatement(query);
-            st.setString(1, id);
+            st.setInt(1, id);
             rs = st.executeQuery();
             rs.next();
             
-            User u = new User (rs.getString("id"),rs.getString("name"),rs.getString("password"));
+            User u = new User (rs.getInt("id"),rs.getString("name"),rs.getString("password"));
 
             return u;
 
@@ -97,7 +97,7 @@ public class SQLUserRepository extends UserRepository {
             st = c.prepareStatement(query);
             rs = st.executeQuery();
             while (rs.next()){
-                list.add(new User(rs.getString("id"),rs.getString("name"),rs.getString("password")));
+                list.add(new User(rs.getInt("id"),rs.getString("name"),rs.getString("password")));
             }
         }catch(SQLException e){
             

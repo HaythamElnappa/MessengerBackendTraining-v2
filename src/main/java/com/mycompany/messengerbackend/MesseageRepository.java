@@ -11,7 +11,7 @@ public abstract class MesseageRepository {
         
 	public abstract void addMessage(Message message);
 	
-	public abstract boolean removeMessage(String id);
+	public abstract boolean removeMessage(int id);
         
-	public abstract Message getMessageById(String id); 
+	public abstract Message getMessageById(int id); 
 }

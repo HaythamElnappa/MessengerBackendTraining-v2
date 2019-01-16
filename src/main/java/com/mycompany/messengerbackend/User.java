@@ -5,13 +5,13 @@ package com.mycompany.messengerbackend;
 public class User {
     
     // the private variable 
-	private String id;
+	private int id;
 	private String name;
 	private String password;
 	
 	// the constractor
 	
-	public User(String id , String name, String password) {
+	public User(int id , String name, String password) {
 		this.id = id;
 		this.name = name;
 		this.password = password;
@@ -24,11 +24,11 @@ public class User {
 	
 	//the public getter and setter for the variable
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

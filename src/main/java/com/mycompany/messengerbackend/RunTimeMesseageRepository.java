@@ -18,7 +18,7 @@ public class RunTimeMesseageRepository extends MesseageRepository {
     //_________________________________________________________________________//
     
     @Override
-    public boolean removeMessage(String id) {
+    public boolean removeMessage(int id) {
 	for(int i =0 ; i <messages.size();i++) {
 		if (messages.get(i).getId()== id) {
 			messages.remove(this.messages.get(i));
@@ -31,7 +31,7 @@ public class RunTimeMesseageRepository extends MesseageRepository {
     //__________________________________________________________________________//
     
     @Override
-    public Message getMessageById(String id) {
+    public Message getMessageById(int id) {
 	for(int i =0 ; i <messages.size();i++) {
 		if (messages.get(i).getId()== id) {
 			return this.messages.get(i);

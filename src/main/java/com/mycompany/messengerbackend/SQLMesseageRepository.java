@@ -34,7 +34,7 @@ public class SQLMesseageRepository extends MesseageRepository {
             
             while(rs.next()){
                 
-                list.add(new Message(rs.getString("id"),rs.getString("m.body")));
+                list.add(new Message(rs.getInt("id"),rs.getString("m.body")));
                 
             }
             
@@ -55,7 +55,7 @@ public class SQLMesseageRepository extends MesseageRepository {
             c = dbc.connect();
             query = "insert into message values(?,?,?,?)";
             st = c.prepareStatement(query);
-            st.setString(1, m.getId());
+            st.setInt(1, m.getId());
             st.setString(2, m.getBody());
             st.setString(4, m.getReceivedId());
             st.setString(3, m.getSenderId());
@@ -73,14 +73,14 @@ public class SQLMesseageRepository extends MesseageRepository {
     //_____________________________________________________________________________________//
     
     @Override
-    public boolean removeMessage(String id){
+    public boolean removeMessage(int id){
         
         try{
             
             c = dbc.connect();
             query = "delete from message where id = ?";
             st = c.prepareStatement(query);
-            st.setString(1,id);
+            st.setInt(1,id);
             st.execute();
             
             System.out.println("step 1 complete");
@@ -95,7 +95,8 @@ public class SQLMesseageRepository extends MesseageRepository {
     
     //_____________________________________________________________________________________//
     
-    public Message getMessageById(String id){
+    @Override
+    public Message getMessageById(int id){
         
 
         try {
@@ -103,12 +104,12 @@ public class SQLMesseageRepository extends MesseageRepository {
             c = dbc.connect();
             query = "select id , m.body , senderid , receiverid from user where id = ?";
             st = c.prepareStatement(query);
-            st.setString(1, id);
+            st.setInt(1, id);
             rs = st.executeQuery();
             rs.next();
             
             
-            Message m = new Message(rs.getString("id"),rs.getString("m.body"),rs.getString("senderid"),rs.getString("receiverid"));
+            Message m = new Message(rs.getInt("id"),rs.getString("m.body"),rs.getString("senderid"),rs.getString("receiverid"));
             
             return m;
 

@@ -16,9 +16,9 @@ public class RunTimeUserRepository extends UserRepository {
     };
     
     @Override
-    public boolean removeUserById(String id){
+    public boolean removeUserById(int id){
     	for(int i=0 ; i<users.size();i++) {
-	    if(users.get(i).getId()==id) {
+	    if(users.get(i).getId()== id) {
 		users.remove(this.users.get(i));
 		return true;
                     }
@@ -27,7 +27,7 @@ public class RunTimeUserRepository extends UserRepository {
     };
     
     @Override
-    public User getElementById(String id){
+    public User getElementById(int id){
     
         for(int i=0 ; i<users.size();i++) {
             if(users.get(i).getId()==id) {

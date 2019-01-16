@@ -6,7 +6,7 @@ public class Message {
     
     // the private variable 
 	
-	private String id;
+	private int id;
 	private String body;
 	private String senderId;
 	private String receivedId;
@@ -14,14 +14,14 @@ public class Message {
         public Message(){};
 	
 	 
-	public Message (String id , String body ,String senderId, String reciverId) {
+	public Message (int id , String body ,String senderId, String reciverId) {
 		this.id = id;
 		this .body =body;
                 this.senderId = senderId;
                 this.receivedId = reciverId;
 	}
         
-        public Message (String id , String body) {
+        public Message (int id , String body) {
 		this.id = id;
 		this .body =body;
                 
@@ -29,11 +29,11 @@ public class Message {
         
         
 	
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 

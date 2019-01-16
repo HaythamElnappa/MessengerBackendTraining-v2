@@ -10,7 +10,7 @@ public class DBConnect {
     
      private final String user = "root";
      private final String pass = "";
-     private final String url = "jdbc:mysql://localhost/messengerbackend";
+     private final String url = "jdbc:mysql://localhost/messengerbackend2";
     
     public Connection connect() throws SQLException{
         

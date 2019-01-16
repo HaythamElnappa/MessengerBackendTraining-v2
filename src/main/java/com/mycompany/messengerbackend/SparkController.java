@@ -15,8 +15,8 @@ public class SparkController {
 
         
         get("/user/:id",(req,res)->{
-            
-            return new Gson().toJson(ur.getElementById(req.params(":id")));
+
+            return new Gson().toJson(ur.getElementById(Integer.parseInt(req.params(":id"))));
         });
         
         get("/user",(req,res)->{
@@ -32,14 +32,11 @@ public class SparkController {
         
         post("/user/:id",(req,res)->{
             
-            ur.removeUserById(":id");
+            ur.removeUserById(Integer.parseInt(":id"));
             return "user is deleted";
         });
         
-        post("/user/:id/message",(req,res)->{
         
-            return "message sent";
-        });
     }
     
 }
