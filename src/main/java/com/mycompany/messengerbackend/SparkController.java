@@ -15,24 +15,34 @@ public class SparkController {
 
         
         get("/user/:id",(req,res)->{
+            
+            int id = Integer.parseInt(req.params(":id"));
+            String body = new Gson().toJson(ur.getElementById(id));
 
-            return new Gson().toJson(ur.getElementById(Integer.parseInt(req.params(":id"))));
+            return body;
         });
         
-        get("/user",(req,res)->{
+        
+        get("/users",(req,res)->{
             
-            return new Gson().toJsonTree(ur.getAllUsers());
+            String body = new Gson().toJson(ur.getAllUsers());
+            
+            return body;
         });
         
         post("/user",(req,res)->{
             
-            ur.addUser(new Gson().fromJson(req.body(), User.class));
+            User u = new Gson().fromJson(req.body(), User.class);
+            ur.addUser(u);
+            
             return "user is added";
         });
         
-        post("/user/:id",(req,res)->{
+        delete("/user/:id",(req,res)->{
             
-            ur.removeUserById(Integer.parseInt(":id"));
+            int id = Integer.parseInt(":id");
+            
+            ur.removeUserById(id);
             return "user is deleted";
         });
         
