@@ -4,7 +4,7 @@ package com.mycompany.messengerbackend;
 import java.util.ArrayList;
 
 
-public class RunTimeUserRepository extends UserRepository {
+public class UserArrayListRepository extends UserRepository {
     
     private ArrayList<User> users = new ArrayList<User>() ;
 
@@ -16,21 +16,21 @@ public class RunTimeUserRepository extends UserRepository {
     };
     
     @Override
-    public boolean removeUserById(int id){
-    	for(int i=0 ; i<users.size();i++) {
-	    if(users.get(i).getId()== id) {
-		users.remove(this.users.get(i));
-		return true;
+    public User removeUserById(int id){
+    	for(int i=0 ; i<this.users.size();i++) {
+	    if(this.users.get(i).getId()== id) {
+		this.users.remove(this.users.get(i));
+		return this.users.get(i);
                     }
 		}
-	return false;   
+	return null;   
     };
     
     @Override
-    public User getElementById(int id){
+    public User getUserById(int id){
     
-        for(int i=0 ; i<users.size();i++) {
-            if(users.get(i).getId()==id) {
+        for(int i=0 ; i<this.users.size();i++) {
+            if(this.users.get(i).getId()==id) {
                 return this.users.get(i);
             }	
 	}
@@ -40,9 +40,6 @@ public class RunTimeUserRepository extends UserRepository {
     @Override
     public ArrayList getAllUsers(){
     
-        return users;        
+        return this.users;        
     }
-            
-    
-    
 }

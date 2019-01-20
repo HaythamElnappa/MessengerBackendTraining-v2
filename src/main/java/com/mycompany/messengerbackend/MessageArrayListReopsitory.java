@@ -4,7 +4,7 @@ package com.mycompany.messengerbackend;
 import java.util.ArrayList;
 
 
-public class RunTimeMesseageRepository extends MesseageRepository {
+public class MessageArrayListReopsitory extends MessageRepository {
     
     
     private ArrayList<Message> messages = new ArrayList<>();
@@ -12,28 +12,28 @@ public class RunTimeMesseageRepository extends MesseageRepository {
     
     @Override
     public ArrayList getAllMessages() {
-	return messages;
+	return this.messages;
     }
     
     //_________________________________________________________________________//
     
     @Override
-    public boolean removeMessage(int id) {
-	for(int i =0 ; i <messages.size();i++) {
-		if (messages.get(i).getId()== id) {
-			messages.remove(this.messages.get(i));
-			return true;
+    public Message removeMessageById(int id) {
+	for(int i =0 ; i <this.messages.size();i++) {
+		if (this.messages.get(i).getId()== id) {
+			this.messages.remove(this.messages.get(i));
+			return this.messages.get(i);
 		}
             }
-	return false;
+	return null;
     }
     
     //__________________________________________________________________________//
     
     @Override
     public Message getMessageById(int id) {
-	for(int i =0 ; i <messages.size();i++) {
-		if (messages.get(i).getId()== id) {
+	for(int i =0 ; i <this.messages.size();i++) {
+		if (this.messages.get(i).getId()== id) {
 			return this.messages.get(i);
 		}
             }

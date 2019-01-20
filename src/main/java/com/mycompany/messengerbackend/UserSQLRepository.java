@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class SQLUserRepository extends UserRepository {
+public class UserSQLRepository extends UserRepository {
     
     Connection c ;
     PreparedStatement st;
@@ -41,10 +41,13 @@ public class SQLUserRepository extends UserRepository {
     }
     
     @Override
-    public boolean removeUserById(int id){
+    public User removeUserById(int id){
+        
+        UserSQLRepository u = new UserSQLRepository();
         
         try{
             
+            User deletedUser = u.getUserById(id);
             c = dbc.connect();
             query = "delete from user where id = ?";
             st = c.prepareStatement(query);
@@ -52,18 +55,18 @@ public class SQLUserRepository extends UserRepository {
             st.execute();
             
             System.out.println("step 1 complete");
-            return true;
+            return deletedUser;
         
         }catch(SQLException e){
             
             System.out.println(e.getMessage());
-            return false;
+            return null;
         }
     }
     
     
     @Override
-    public User getElementById(int id) {
+    public User getUserById(int id) {
 
 
         try {

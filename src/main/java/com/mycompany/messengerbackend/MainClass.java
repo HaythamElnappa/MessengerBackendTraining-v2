@@ -2,32 +2,35 @@
 package com.mycompany.messengerbackend;
 
 import com.google.gson.Gson;
+import java.util.ArrayList;
 import static spark.Spark.*;
 
 
-public class SparkController {
+public class MainClass {
 
     
     public static void main(String[] args) {
         
-        SQLUserRepository ur = new SQLUserRepository();
+        UserSQLRepository ur = new UserSQLRepository();
         
 
         
         get("/user/:id",(req,res)->{
             
             int id = Integer.parseInt(req.params(":id"));
-            String body = new Gson().toJson(ur.getElementById(id));
+            User u = ur.getUserById(id);
+            String jsonUser = new Gson().toJson(u);
 
-            return body;
+            return jsonUser;
         });
         
         
         get("/users",(req,res)->{
             
-            String body = new Gson().toJson(ur.getAllUsers());
+            ArrayList u = ur.getAllUsers();
+            String jsonUsers = new Gson().toJson(u);
             
-            return body;
+            return jsonUsers;
         });
         
         post("/user",(req,res)->{
@@ -40,10 +43,10 @@ public class SparkController {
         
         delete("/user/:id",(req,res)->{
             
-            int id = Integer.parseInt(":id");
+            int id = Integer.parseInt(req.params(":id"));
+            User deletedUser = ur.removeUserById(id);
             
-            ur.removeUserById(id);
-            return "user is deleted";
+            return deletedUser;
         });
         
         
