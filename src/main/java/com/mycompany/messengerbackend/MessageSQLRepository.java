@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 
-public class SQLMesseageRepository extends MesseageRepository {
+public class MessageSQLRepository extends MessageRepository {
     
     private Connection c;
     private PreparedStatement st;
@@ -73,9 +73,12 @@ public class SQLMesseageRepository extends MesseageRepository {
     //_____________________________________________________________________________________//
     
     @Override
-    public boolean removeMessage(int id){
+    public Message removeMessageById(int id){
         
         try{
+            
+            MessageSQLRepository m = new MessageSQLRepository();
+            Message deletedMessage = m.getMessageById(id);
             
             c = dbc.connect();
             query = "delete from message where id = ?";
@@ -83,13 +86,12 @@ public class SQLMesseageRepository extends MesseageRepository {
             st.setInt(1,id);
             st.execute();
             
-            System.out.println("step 1 complete");
-            return true;
+            return deletedMessage;
         
         }catch(SQLException e){
             
             System.out.println(e.getMessage());
-            return false;
+            return null;
         }
     }
     
