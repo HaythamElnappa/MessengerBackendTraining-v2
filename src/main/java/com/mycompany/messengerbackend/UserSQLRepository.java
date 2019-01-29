@@ -89,6 +89,30 @@ public class UserSQLRepository extends UserRepository {
 
         }
     }
+    @Override
+    public User getUserByName(String name) {
+
+
+        try {
+
+            c = dbc.connect();
+            query = "select id , name , password from user where name = ?";
+            st = c.prepareStatement(query);
+            st.setString(1, name);
+            rs = st.executeQuery();
+            rs.next();
+            
+            User u = new User (rs.getInt("id"),rs.getString("name"),rs.getString("password"));
+
+            return u;
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            return null;
+
+        }
+    }
     
     @Override
     public ArrayList getAllUsers(){

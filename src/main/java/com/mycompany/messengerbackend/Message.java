@@ -8,17 +8,17 @@ public class Message {
 	
 	private int id;
 	private String body;
-	private String senderId;
-	private String receivedId;
+	private int senderId;
+	private int receiverId;
         
         public Message(){};
 	
 	 
-	public Message (int id , String body ,String senderId, String reciverId) {
+	public Message (int id , String body ,int senderId, int reciverId) {
 		this.id = id;
 		this .body =body;
                 this.senderId = senderId;
-                this.receivedId = reciverId;
+                this.receiverId = reciverId;
 	}
         
         public Message (int id , String body) {
@@ -45,20 +45,20 @@ public class Message {
 		this.body = body;
 	}
 
-	public String getSenderId() {
+	public int getSenderId() {
 		return this.senderId;
 	}
 
-	public void setSenderId(String senderId) {
+	public void setSenderId(int senderId) {
 		this.senderId = senderId;
 	}
 
-	public String getReceivedId() {
-		return this.receivedId;
+	public int getReceivedId() {
+		return this.receiverId;
 	}
 
-	public void setReceivedId(String receivedId) {
-		this.receivedId = receivedId;
+	public void setReceivedId(int receivedId) {
+		this.receiverId = receivedId;
 	}
     
 }
