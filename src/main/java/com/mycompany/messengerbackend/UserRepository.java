@@ -11,6 +11,8 @@ public abstract class UserRepository {
     public abstract User removeUserById(int id);
     
     public abstract User getUserById(int id);
+
+    public abstract User getUserByName(String name);
     
     public abstract ArrayList getAllUsers();
 }

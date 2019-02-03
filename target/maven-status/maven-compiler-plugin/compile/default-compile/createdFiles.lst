@@ -1,0 +1,11 @@
+com\mycompany\messengerbackend\Message.class
+com\mycompany\messengerbackend\DBConnect.class
+com\mycompany\messengerbackend\User.class
+com\mycompany\messengerbackend\MainClass.class
+com\mycompany\messengerbackend\MessageSQLRepository.class
+com\mycompany\messengerbackend\MessageRepository.class
+com\mycompany\messengerbackend\Authentication.class
+com\mycompany\messengerbackend\UserArrayListRepository.class
+com\mycompany\messengerbackend\MessageArrayListReopsitory.class
+com\mycompany\messengerbackend\UserRepository.class
+com\mycompany\messengerbackend\UserSQLRepository.class
